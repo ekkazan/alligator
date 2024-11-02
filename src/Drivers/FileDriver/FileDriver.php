@@ -11,9 +11,9 @@
  * Only for testing and development purposes.
  */
 
-namespace ekkazan\Alligator\Drivers\FileDriver;
+namespace Ekkazan\Alligator\Drivers\FileDriver;
 
-use ekkazan\Alligator\Drivers\Driver;
+use Ekkazan\Alligator\Drivers\Driver;
 
 class FileDriver implements Driver {
     /**

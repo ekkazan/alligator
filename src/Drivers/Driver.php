@@ -1,6 +1,6 @@
 <?php
 
-namespace ekkazan\Alligator\Drivers;
+namespace Ekkazan\Alligator\Drivers;
 
 interface Driver {
     /**

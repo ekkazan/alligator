@@ -1,9 +1,8 @@
 <?php
 
-namespace ekkazan;
+namespace Ekkazan\Alligator;
 
-use ekkazan\Alligator\Drivers\Driver;
-use ekkazan\Alligator\Periods;
+use Ekkazan\Alligator\Drivers\Driver;
 
 class Alligator {
     /**

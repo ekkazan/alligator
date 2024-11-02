@@ -7,11 +7,11 @@
  * See for more details: https://github.com/phpredis/phpredis
  */
 
-namespace ekkazan\Alligator\Drivers\RedisDriver;
+namespace Ekkazan\Alligator\Drivers\RedisDriver;
 
+use Ekkazan\Alligator\Drivers\Driver;
 use Redis;
 use RedisException;
-use ekkazan\Alligator\Drivers\Driver;
 
 class RedisDriver implements Driver {
     /**

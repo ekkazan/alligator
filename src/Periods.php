@@ -1,6 +1,6 @@
 <?php
 
-namespace ekkazan\Alligator;
+namespace Ekkazan\Alligator;
 
 class Periods {
     public const PER_MINUTE = 60;
