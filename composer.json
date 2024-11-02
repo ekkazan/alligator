@@ -5,7 +5,6 @@
   "keywords": ["rate limiter", "rate limiting", "throttling", "rate limiter library", "rate limiting library", "throttling library"],
   "homepage": "https://github.com/ekkazan/alligator",
   "license": "MIT",
-  "version": "1.0.0",
   "authors": [
     {
       "name": "H. Cem Ekkazan",
