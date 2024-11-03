@@ -20,4 +20,14 @@ interface Driver {
      * @return bool
      */
     public function increment(string $alias): bool;
+
+    /**
+     * Get the rate limit for the given alias and increment it.
+     * Create a new rate limit if it does not exist.
+     *
+     * @param string $alias
+     * @param int $interval
+     * @return int
+     */
+    public function getAndIncrement(string $alias, int $interval): int;
 }

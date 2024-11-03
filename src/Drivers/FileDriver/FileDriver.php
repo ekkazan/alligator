@@ -60,8 +60,6 @@ class FileDriver implements Driver {
                     'created_at' => time()
                 ];
             }
-
-            $data[$alias]['rate']++;
         } else {
             $data[$alias] = [
                 'rate' => 1,
@@ -81,7 +79,7 @@ class FileDriver implements Driver {
      * @param string $alias
      * @return bool
      */
-    public function increment(string $alias,): bool {
+    public function increment(string $alias): bool {
         $data = $this->getFile();
 
         if (array_key_exists($alias, $data)) {
@@ -97,6 +95,40 @@ class FileDriver implements Driver {
         }
 
         return $result;
+    }
+
+    /**
+     * Get the rate limit for the given alias and increment it.
+     * Create a new rate limit if it does not exist.
+     *
+     * @param string $alias
+     * @param int $interval
+     * @return int
+     */
+    public function getAndIncrement(string $alias, int $interval): int {
+        $data = $this->getFile();
+
+        if (array_key_exists($alias, $data)) {
+            if ($data[$alias]['created_at'] + $data[$alias]['interval'] < time()) {
+                $data[$alias] = [
+                    'rate' => 0,
+                    'interval' => $interval,
+                    'created_at' => time()
+                ];
+            }
+
+            $data[$alias]['rate']++;
+        } else {
+            $data[$alias] = [
+                'rate' => 1,
+                'interval' => $interval,
+                'created_at' => time()
+            ];
+        }
+
+        $this->writeFile($data);
+
+        return $data[$alias]['rate'];
     }
 
     /**

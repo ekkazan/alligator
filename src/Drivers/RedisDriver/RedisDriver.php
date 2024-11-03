@@ -49,9 +49,9 @@ class RedisDriver implements Driver {
         if ($this->redis->exists($alias)) {
             $rate = $this->redis->get($alias);
         } else {
-            $this->redis->set($alias, 1, $interval);
-
             $rate = 1;
+
+            $this->redis->set($alias, $rate, $interval);
         }
 
         return $rate;
@@ -70,5 +70,26 @@ class RedisDriver implements Driver {
         }
 
         return $result ?? false;
+    }
+
+    /**
+     * Get the rate limit for the given alias and increment it.
+     * Create a new rate limit if it does not exist.
+     *
+     * @param string $alias
+     * @param int $interval
+     * @return int
+     * @throws RedisException
+     */
+    public function getAndIncrement(string $alias, int $interval): int {
+        if ($this->redis->exists($alias)) {
+            $rate = $this->redis->incr($alias);
+        } else {
+            $this->redis->set($alias, 1, $interval);
+
+            $rate = 1;
+        }
+
+        return $rate;
     }
 }
